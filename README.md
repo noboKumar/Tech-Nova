@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tech Nova
 
-## Getting Started
+Tech Nova is a modern e-commerce web application for tech gadgets, built with **Next.js 15**, **MongoDB**, and **NextAuth.js** for secure authentication. The platform allows users to browse products, view detailed information, and—if authenticated—manage products via an admin dashboard.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- **Product Browsing:** Explore a wide range of tech gadgets.
+- **Product Details:** View comprehensive information for each product.
+- **Authentication:** Secure login and registration powered by NextAuth.js.
+- **Admin Dashboard:** Authenticated users can add new products.
+- **Responsive Design:** Optimized for desktop and mobile devices.
+- **Real-Time Updates:** Instant product changes reflected across the app.
+
+---
+
+## 🛠️ Setup & Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/tech-nova.git
+cd tech-nova
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env.local` file at the root of your project and add the following:
+
+```
+AUTH_SECRET=your_auth_secret
+MONGODB_URI=your_mongodb_uri
+AUTH_TRUST_HOST=true
+MONGODB_DB=your_mongodb_database
+```
+
+### 4. Start the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🌐 Route Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Public Routes
 
-## Learn More
+| Path             | Description                |
+| ---------------- | -------------------------- |
+| `/`              | Landing/Home page          |
+| `/products`      | Products listing page      |
+| `/products/[id]` | Individual product details |
+| `/login`         | User login page            |
+| `/register`      | User registration page     |
 
-To learn more about Next.js, take a look at the following resources:
+### Protected Routes (Dashboard)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Path                     | Description       |
+| ------------------------ | ----------------- |
+| `/dashboard`             | Dashboard home    |
+| `/dashboard/add-product` | Add a new product |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### API Routes
 
-## Deploy on Vercel
+| Path                      | Description         |
+| ------------------------- | ------------------- |
+| `/api/auth/[...nextauth]` | Authentication APIs |
+| `/api/products`           | Fetch all products  |
+| `/api/register`           | Register a new user |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please open issues or submit pull requests for improvements and bug fixes.
+
+---
+
+## 📧 Contact
+
+For questions or support, please contact
