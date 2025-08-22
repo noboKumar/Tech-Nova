@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import { toast } from "sonner";
 
 export default function AddProducts() {
   const handleSubmit = async (e) => {
@@ -12,13 +13,16 @@ export default function AddProducts() {
     console.log({ name, description, price });
 
     try {
-      const res = await axios.post("/api/products", {
+      await axios.post("/api/products", {
         name,
         description,
         price,
       });
+      toast("Product has been created.");
+      form.reset();
     } catch (error) {
       console.log(error);
+      toast("Error: " + error.message);
     }
   };
   return (
