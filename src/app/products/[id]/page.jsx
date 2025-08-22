@@ -4,6 +4,7 @@ import { ObjectId } from "mongodb";
 import Image from "next/image";
 import Link from "next/link";
 import { HiArrowLeft } from "react-icons/hi";
+import placeholder from "@/assets/placeholder-image.png";
 
 const ProductsDetails = async ({ params }) => {
   const { id } = params;
@@ -25,18 +26,18 @@ const ProductsDetails = async ({ params }) => {
       </Link>
       {product.photo && (
         <Image
-          src={product.photo}
+          src={product.photo || placeholder}
           alt={product.name}
           width={200}
           height={200}
           className="object-cover rounded-md w-full mx-auto h-60 border"
         />
       )}
-      <h1 className="text-2xl font-bold">{product.name}</h1>
-      <p className="font-bold mt-2 text-2xl">${product.price}</p>
+      <h1 className="text-2xl font-bold">{product.name || "Unknown Product"}</h1>
+      <p className="font-bold mt-2 text-2xl">${product.price || "Unknown Price"}</p>
       <p className="text-gray-700 text-lg font-medium py-5">
         <span className="underline">Details: </span>
-        {product.description}
+        {product.description || "No description available."}
       </p>
     </div>
   );
