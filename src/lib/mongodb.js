@@ -18,8 +18,7 @@ clientPromise = global._mongoClientPromise;
 export async function getDb() {
   const client = await clientPromise;
   const db = client.db(dbName);
-  // Ensure a unique index on email (idempotent; runs fast after first time)
-  await db.collection("users").createIndex({ email: 1 }, { unique: true });
   return db;
 }
+
 export default clientPromise;

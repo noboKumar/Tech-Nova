@@ -1,4 +1,3 @@
-"use client";
 import { FiHome, FiShoppingCart, FiShoppingBag } from "react-icons/fi";
 import Link from "next/link";
 
