@@ -1,11 +1,16 @@
 "use client";
+import Spinner from "@/components/Spinner";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export default function AddProducts() {
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const form = e.target;
     const name = form.name.value;
     const description = form.description.value;
@@ -23,6 +28,8 @@ export default function AddProducts() {
     } catch (error) {
       console.log(error);
       toast("Error: " + error.message);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -76,7 +83,8 @@ export default function AddProducts() {
 
           {/* Submit Button */}
           <Button type="submit" className="mt-4 w-full cursor-pointer">
-            Add Product
+            {loading && <Spinner />}
+            {loading ? "Adding..." : "Add Product"}
           </Button>
         </form>
       </div>

@@ -31,8 +31,8 @@ export default function RootLayout({ children }) {
       >
         <Providers>
           <NavBar />
-          <Toaster />
           <div className="min-h-[calc(100vh-10rem)] w-11/12 mx-auto py-5">
+          <Toaster position="top-right" />
             {children}
           </div>
           <Footer />
