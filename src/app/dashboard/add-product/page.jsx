@@ -15,13 +15,15 @@ export default function AddProducts() {
     const name = form.name.value;
     const description = form.description.value;
     const price = form.price.value;
-    console.log({ name, description, price });
+    const photo = form.photo.value;
+    console.log({ name, description, price, photo });
 
     try {
       await axios.post("/api/products", {
         name,
         description,
         price,
+        photo
       });
       toast("Product has been created.");
       form.reset();
@@ -49,6 +51,19 @@ export default function AddProducts() {
               type="text"
               name="name"
               placeholder="Enter product name"
+              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Product photo URL */}
+          <div className="flex flex-col">
+            <label htmlFor="photo" className="mb-1 font-medium text-gray-700">
+              Product Photo URL
+            </label>
+            <input
+              type="url"
+              name="photo"
+              placeholder="Enter product photo URL"
               className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>

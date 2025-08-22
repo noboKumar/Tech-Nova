@@ -2,11 +2,11 @@ import { getDb } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  const { name, description, price } = await req.json();
+  const { name, description, price, photo } = await req.json();
   const db = await getDb();
   const result = await db
     .collection("products")
-    .insertOne({ name, description, price });
+    .insertOne({ name, description, price, photo });
   return NextResponse.json({ id: result.insertedId });
 }
 
