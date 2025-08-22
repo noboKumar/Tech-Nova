@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Swal from "sweetalert2";
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -19,8 +20,26 @@ export default function LoginPage() {
       password: form.password,
       redirect: false,
     });
-    if (res?.ok) router.push("/products");
-    else setError("Invalid credentials");
+    if (res?.ok) {
+      // Show SweetAlert for successful login
+      await Swal.fire({
+        icon: "success",
+        title: "Welcome!",
+        text: "You have logged in successfully",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      // Redirect after SweetAlert closes
+      router.push("/products");
+    } else {
+      setError("Invalid credentials");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Invalid email or password",
+      });
+    }
   }
 
   return (
@@ -52,7 +71,9 @@ export default function LoginPage() {
         <p className="font-semibold text-gray-700">
           Don't have an account?{" "}
           <span>
-            <Link className="underline" href={"/register"}>Register</Link>
+            <Link className="underline" href={"/register"}>
+              Register
+            </Link>
           </span>
         </p>
       </form>

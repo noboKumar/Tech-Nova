@@ -2,8 +2,8 @@
 import React from "react";
 import Logo from "./Logo";
 import Link from "next/link";
-import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
+import AuthButton from "./AuthButton";
 
 const NavBar = () => {
   const navLinks = [
@@ -40,9 +40,7 @@ const NavBar = () => {
         </div>
         {/* nav end */}
         <div>
-          <Link href={"/login"}>
-            <Button className={"cursor-pointer"}>Login</Button>
-          </Link>
+          <AuthButton />
         </div>
       </div>
     </div>
