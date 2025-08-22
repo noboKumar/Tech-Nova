@@ -24,7 +24,7 @@ const Products = async () => {
                 alt={product.name}
                 width={200}
                 height={200}
-                className="object-cover rounded-md w-full mx-auto"
+                className="object-cover rounded-md w-full mx-auto h-60 border"
               />
             ) : (
               <Image

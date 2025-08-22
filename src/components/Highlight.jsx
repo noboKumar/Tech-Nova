@@ -1,4 +1,5 @@
 import { getDb } from "@/lib/mongodb";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -11,11 +12,20 @@ const Highlight = async () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {products.map((product) => (
           <Link
-            className="hover:scale-102 transition-transform duration-200 bg-gray-50 rounded-2xl"
+            className="hover:scale-102 transition-transform duration-200 bg-gray-50 rounded-2xl border-2"
             key={product._id}
             href={`/products/${product._id}`}
           >
-            <div className="border p-4 rounded-xl cursor-pointer">
+            <div className=" p-4 rounded-xl cursor-pointer">
+              {product.photo && (
+                <Image
+                  src={product.photo}
+                  alt={product.name}
+                  width={200}
+                  height={200}
+                  className="object-cover rounded-md w-full mx-auto h-60 border"
+                />
+              )}
               <h2 className="text-lg font-bold">{product.name}</h2>
               <p className="text-sm">{product.description}</p>
             </div>
