@@ -4,13 +4,17 @@ import Logo from "./Logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import AuthButton from "./AuthButton";
+import { useSession } from "next-auth/react";
 
 const NavBar = () => {
+  const { data: session } = useSession();
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Products", href: "/products" },
-    { name: "Dashboard", href: "/dashboard" },
   ];
+  if (session?.user) {
+    navLinks.push({ name: "Dashboard", href: "/dashboard" });
+  }
   const pathName = usePathname();
   return (
     <div className="bg-gray-200 border-b-2 border-gray-300 sticky top-0 z-10">
