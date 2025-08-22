@@ -19,7 +19,7 @@ export default function LoginPage() {
       password: form.password,
       redirect: false,
     });
-    if (res?.ok) router.push("/dashboard");
+    if (res?.ok) router.push("/products");
     else setError("Invalid credentials");
   }
 
