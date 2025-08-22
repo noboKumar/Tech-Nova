@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { getDb } from "@/lib/mongodb";
 import Link from "next/link";
-import React from "react";
+export const revalidate = 0;
 
 const Products = async () => {
   const db = await getDb();
   const products = await db.collection("products").find().toArray();
+  console.log(products);
   return (
     <div>
       <h1 className="text-3xl font-bold text-center underline">Products</h1>
